@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --inspect index.js",
+    "start": "node index.js",
+    "start:dev": "nodemon --inspect index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,9 +15,7 @@
     "express": "^4.18.2",
     "mongodb": "^4.11.0",
     "mongoose": "^6.7.2",
-    "mongoose-slug-generator": "^1.0.4"
-  },
-  "devDependencies": {
+    "mongoose-slug-generator": "^1.0.4",
     "nodemon": "^2.0.20"
   }
 }
