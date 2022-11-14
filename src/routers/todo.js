@@ -10,5 +10,6 @@ router.post("/todolist/add", todoController.creatNewToDo)
 router.post("/todolist/:id", todoController.deleteItem);
 router.get("/todolist/search", todoController.searchToDo);
 router.get("/todolist", todoController.getAllData);
+router.get("/", todoController.getAllData);
 
 module.exports = router
