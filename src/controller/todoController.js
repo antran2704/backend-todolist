@@ -1,9 +1,9 @@
-const TodoModel = require("../model/model");
+const {Todo} = require("../model/model");
 
 const todoController = {
   //[GET] all data
   getAllData: (req, res, next) => {
-    TodoModel.find({})
+    Todo.find({})
       .then((todo) => {
         res.json(todo);
       })
@@ -11,7 +11,7 @@ const todoController = {
   },
   //[Post] delete item
   deleteItem: async (req, res, next) => {
-    const model = await TodoModel.findOne({ "data._id": req.params.id })
+    const model = await Todo.findOne({ "data._id": req.params.id })
       .then((item) => {
         return item;
       })
@@ -28,14 +28,14 @@ const todoController = {
   //[POST] creat new todo
   creatNewToDo: (req, res, next) => {
     if (res.status(200)) {
-      const item = new TodoModel(req.body);
+      const item = new Todo(req.body);
       item.save();
     }
     res.status(200).json(req.body);
   },
   //[POST] update new todo
   updateNewToDo: async (req, res, next) => {
-    const model = await TodoModel.findById({ _id: req.params.id }).then(
+    const model = await Todo.findById({ _id: req.params.id }).then(
       (item) => {
         res.json(item.data);
         return item;
@@ -47,7 +47,7 @@ const todoController = {
   //[GET] item edit
   getItemEdit: async (req, res, next) => {
     try {
-      const result = await TodoModel.findOne({ "data._id": req.query.id });
+      const result = await Todo.findOne({ "data._id": req.query.id });
       const test = result.data.find((item) => {
         if (item._id.toString() === req.query.id) {
           return item;
@@ -61,7 +61,7 @@ const todoController = {
   //[PUT] edit todo
   editToDo: async (req, res, next) => {
     try {
-      const model = await TodoModel.findOne({ "data._id": req.params.id }).then(
+      const model = await Todo.findOne({ "data._id": req.params.id }).then(
         (item) => {
           return item;
         }
@@ -74,7 +74,7 @@ const todoController = {
     }
   },
   searchToDo: (req, res, next) => {
-    TodoModel.findOne({ "data._id": req.query.id }).then((item) =>
+    Todo.findOne({ "data._id": req.query.id }).then((item) =>
       res.json(item)
     );
   },
